@@ -52,7 +52,14 @@ def live_data_writer(tickers):
     while True:
         curr_time = datetime.datetime.now(tz=pytz.timezone('US/Eastern')).replace(microsecond=0)
         if curr_time > prev_time:
-            curr_prices = [str(yahoo_fin.stock_info.get_live_price(ticker)) for ticker in tickers]
+            try:
+                curr_prices = [str(yahoo_fin.stock_info.get_live_price(ticker)) for ticker in tickers]
+            except Exception as e:
+                #if there is some issue retrieving data with yahoo_fin.stock_info.get_live_price(ticker), skip the data line and continue
+                print("Exception message: " + e.message)
+                print("Skipping stock price retrieval for current second and continuing")
+                prev_time = curr_time
+                continue
             with open(FILEPATH + str(datetime.date.today()) + "_live" + ".csv", 'a') as outfile:
                 outfile.write(str(curr_time) + "," + ",".join(curr_prices) + "\n")
             prev_time = curr_time
