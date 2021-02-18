@@ -13,7 +13,7 @@ def main():
     """
     args = init_parser()
 
-    stock_list = args.stock_list.split(",")
+    stock_list = args.stock_list.upper().split(",")
     stock_list.sort()
 
     if args.type == "live":
@@ -42,7 +42,7 @@ def init_parser():
 
 def live_data_writer(tickers):
     """
-    Writes live stock price data to a file
+    Writes live stock price data to a file - attempts to do so every second
     param <list[<str>]> tickers: list of stock tickers to get live prices
     """
     with open(FILEPATH + str(datetime.date.today()) + "_live" + ".csv", 'w') as outfile:
