@@ -56,7 +56,6 @@ def live_data_writer(tickers):
                 curr_prices = [str(yahoo_fin.stock_info.get_live_price(ticker)) for ticker in tickers]
             except Exception as e:
                 #if there is some issue retrieving data with yahoo_fin.stock_info.get_live_price(ticker), skip the data line and continue
-                print("Exception message: " + e.message)
                 print("Skipping stock price retrieval for", curr_time, "and continuing")
                 prev_time = curr_time
                 continue
