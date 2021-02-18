@@ -34,7 +34,6 @@ def import_data(file):
     return <class 'pandas.core.frame.DataFrame'> data: dataframe containing summary stock data
     """
     data = pd.read_csv(FILEPATH + file).set_index('Datetime')
-    print(type(data))
     return data
 
 
