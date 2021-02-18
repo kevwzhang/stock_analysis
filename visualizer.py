@@ -20,7 +20,7 @@ def init_parser():
     arg filename: name of the csv file containing the summary data
     return <class 'argparse.Namespace'> args: the argument values the user provides
     """
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Used to visualize stock data')
     parser.add_argument("filename")
     args = parser.parse_args()
 

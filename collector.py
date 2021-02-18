@@ -32,7 +32,7 @@ def init_parser():
     arg stock_list: list of stock tickers to retrieve data for, example use 'SNAP,ABNB,UBER'
     return <class 'argparse.Namespace'> args: the argument values the user provides
     """
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Used to retrieve stock data')
     parser.add_argument("type")
     parser.add_argument("stock_list")
     args = parser.parse_args()
