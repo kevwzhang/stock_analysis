@@ -74,12 +74,5 @@ def get_summary_data(tickers):
         yf_data.to_csv(FILEPATH + str(datetime.date.today()) + "_" + ticker + "_hist" + ".csv", index=False)
 
 
-def during_trading_hours():
-    """
-    Returns true if current time is between 9:30 AM and 4:00 PM US eastern time, false otherwise
-    """
-    #TODO
-    pass
-
 if __name__ == "__main__":
     main()
